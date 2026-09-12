@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EdXcel AI | Insight Engine</title> 
+
+    <link rel="stylesheet"
+          href="css/style.css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            <a href="index.html">
+
+                <svg class="logo-svg"
+                     viewBox="0 0 180 60">
+
+                    <defs>
+
+                        <linearGradient id="grad1"
+                                        x1="0%"
+                                        y1="0%"
+                                        x2="100%"
+                                        y2="100%">
+
+                            <stop offset="0%"
+                                  stop-color="#d946ef"/>
+
+                            <stop offset="100%"
+                                  stop-color="#3b82f6"/>
+
+                        </linearGradient>
+
+                        <filter id="glow">
+
+                            <feGaussianBlur
+                                stdDeviation="3"
+                                result="blur"/>
+
+                            <feMerge>
+
+                                <feMergeNode in="blur"/>
+                                <feMergeNode in="SourceGraphic"/>
+
+                            </feMerge>
+
+                        </filter>
+
+                    </defs>
+
+
+                    <line x1="10"
+                          y1="10"
+                          x2="50"
+                          y2="50"
+                          stroke="url(#grad1)"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          filter="url(#glow)"/>
+
+                    <line x1="50"
+                          y1="10"
+                          x2="10"
+                          y2="50"
+                          stroke="url(#grad1)"
+                          stroke-width="5"
+                          stroke-linecap="round"
+                          filter="url(#glow)"/>
+
+
+                    <circle cx="10"
+                            cy="10"
+                            r="5"
+                            fill="url(#grad1)"
+                            filter="url(#glow)"/>
+
+                    <circle cx="50"
+                            cy="10"
+                            r="5"
+                            fill="url(#grad1)"
+                            filter="url(#glow)"/>
+
+                    <circle cx="10"
+                            cy="50"
+                            r="5"
+                            fill="url(#grad1)"
+                            filter="url(#glow)"/>
+
+                    <circle cx="50"
+                            cy="50"
+                            r="5"
+                            fill="url(#grad1)"
+                            filter="url(#glow)"/>
+
+
+                    <text x="70"
+                          y="38"
+                          class="text-ed">
+                        Ed
+                    </text>
+
+                    <text x="95"
+                          y="38"
+                          class="text-xcel">
+                        Xcel
+                    </text>
+
+                    <text x="145"
+                          y="38"
+                          class="text-ai">
+                        AI
+                    </text>
+
+                </svg>
+
+            </a>
+
+        </div>
+
+
+        <div class="menu-toggle">
+
+            <i class="fas fa-bars"></i>
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#services">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="insight-engine.html"
+                   class="active">
+                    Insight Engine
+                </a>
+            </li>
+
+            <li>
+                <a href="careers.html">
+                    Careers
+                </a>
+            </li>
+
+            <li>
+                <a href="index.html#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     INSIGHT ENGINE HERO
+===================================================== -->
+
+<section class="service-hero">
+
+    <h1>
+        EdXcel AI Insight Engine
+    </h1>
+
+    <p>
+        Turn business documents and receipts into
+        structured business intelligence.
+    </p>
+
+</section>
+
+
+
+<!-- =====================================================
+     RECEIPT ANALYSIS
+===================================================== -->
+
+<section class="service-details">
+
+    <h2>
+        Receipt Intelligence
+    </h2>
+
+    <p>
+        Upload a receipt and let EdXcel AI extract
+        the transaction information automatically.
+    </p>
+
+
+    <div class="insight-upload-box">
+
+        <i class="fas fa-receipt"
+           style="font-size: 45px;">
+        </i>
+
+        <h3>
+            Upload Receipt
+        </h3>
+
+        <p>
+            Supported formats: JPG, JPEG and PNG
+        </p>
+
+
+        <input
+            type="file"
+            id="receiptFile"
+            accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+        >
+
+
+        <button
+            id="analyseReceiptButton"
+            class="btn">
+
+            <i class="fas fa-magnifying-glass"></i>
+
+            Analyse Receipt
+
+        </button>
+
+
+        <div id="receiptStatus"
+             class="receipt-status">
+        </div>
+
+    </div>
+
+
+
+    <!-- =================================================
+         RESULTS
+    ================================================== -->
+
+    <div id="receiptResults"
+         class="receipt-results"
+         style="display:none;">
+
+        <h2>
+            Receipt Results
+        </h2>
+
+
+        <div class="receipt-summary">
+
+            <div>
+                <strong>Store</strong>
+
+                <span id="storeName">
+                    -
+                </span>
+            </div>
+
+
+            <div>
+                <strong>Date</strong>
+
+                <span id="receiptDate">
+                    -
+                </span>
+            </div>
+
+
+            <div>
+                <strong>Payment</strong>
+
+                <span id="paymentMethod">
+                    -
+                </span>
+            </div>
+
+
+            <div>
+                <strong>Total</strong>
+
+                <span id="grandTotal">
+                    -
+                </span>
+            </div>
+
+        </div>
+
+
+
+        <h3>
+            Items
+        </h3>
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Product
+                        </th>
+
+                        <th>
+                            Quantity
+                        </th>
+
+                        <th>
+                            Unit Price
+                        </th>
+
+                        <th>
+                            Line Total
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="receiptItems">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+
+        <div class="receipt-totals">
+
+            <p>
+                Subtotal:
+                <strong id="receiptSubtotal">
+                    -
+                </strong>
+            </p>
+
+            <p>
+                Tax:
+                <strong id="receiptTax">
+                    -
+                </strong>
+            </p>
+
+            <p>
+                Discount:
+                <strong id="receiptDiscount">
+                    -
+                </strong>
+            </p>
+
+            <p class="grand-total">
+
+                Grand Total:
+                <strong id="receiptGrandTotal">
+                    -
+                </strong>
+
+            </p>
+
+        </div>
+
+
+        <p id="receiptId"
+           class="receipt-id">
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer>
+
+    <p>
+        © 2026 EdXcelAI |
+        Data Science & AI Consulting Company.
+        All rights reserved
+    </p>
+
+</footer>
+
+
+
+<script src="js/script.js"></script>
+
+<script src="js/insight-engine.js"></script>
+
+</body>
+
+</html>
